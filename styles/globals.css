@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sunset-brown: #2d1a14;
+  --sunset-orange: #ff7e5f;
+  --sunset-peach: #feb47b;
+}
+
+body {
+  background: linear-gradient(180deg, var(--sunset-brown) 0%, var(--sunset-orange) 60%, var(--sunset-peach) 100%);
+  color: var(--sunset-peach);
+  font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--sunset-brown);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sunset-orange);
+  border-radius: 4px;
+}

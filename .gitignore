@@ -1,0 +1,68 @@
+# Node
+node_modules/
+.npm/
+
+# Next.js
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env*
+.env.*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+coverage/
+dist/
+
+# Misc
+*.local
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Mac
+.AppleDouble
+.LSOverride
+Icon?
+.DS_Store
+
+# Test
+jest.config.js
+coverage/
+
+# Others
+*.tgz
+*.lock-wscript
+
+# SASS
+.sass-cache/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# next-env
+.next.env.d.ts
+
