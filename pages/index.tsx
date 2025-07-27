@@ -27,6 +27,33 @@ const projects = [
   },
 ];
 
+const experience = [
+  {
+    title: 'DevOps Engineer',
+    company: 'Alten',
+    period: 'Jan 2024 – Present',
+    description: 'Working for ABB via ALTEN. Focus on CI/CD migration and improvements...',
+  },
+  {
+    title: 'Data Science Student',
+    company: 'FHNW',
+    period: 'Sep 2024 – Present',
+    description: 'Studying data analysis, machine learning, and robotics. Working on real-world projects and research...',
+  },
+  {
+    title: 'CI/CD Intern',
+    company: 'ABB',
+    period: 'Jan 2024 – Jun 2025',
+    description: 'Ansible provisioning for Automation and Configuration Management in build system...',
+  },
+  {
+    title: 'Data Science Intern',
+    company: 'Retrostyle Games',
+    period: 'Jul 2022 – Sep 2022',
+    description: 'Designed algorithms; cleaned and analyzed datasets...',
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -57,7 +84,7 @@ export default function Home() {
               <a href="https://github.com/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="GitHub">
                 <Github className="w-8 h-8" />
               </a>
-              <a href="https://linkedin.com/in/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/qkw/" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-8 h-8" />
               </a>
               <a href="mailto:mykhailo.andrusiak@students.fhnw.ch" className="hover:text-sunset-orange transition-colors" aria-label="Email">
@@ -67,10 +94,11 @@ export default function Home() {
                 <Phone className="w-8 h-8" />
               </a>
             </div>
+            <div className="text-xs text-sunset-peach/40">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
           </div>
         </aside>
         {/* Main content */}
-        <section className="w-full md:flex-1 px-6 py-8 md:py-16 h-screen md:h-auto overflow-auto">
+        <section className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20 h-screen md:h-auto overflow-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,11 +124,13 @@ export default function Home() {
           >
             <h3 className="text-2xl font-semibold mb-4 text-sunset-peach">Experience</h3>
             <ul className="space-y-3">
-              <li className="bg-sunset-brown/60 rounded-lg px-4 py-3">
-                <span className="font-medium">Data Science Student</span> @ FHNW <span className="text-xs text-sunset-peach/60">2022–present</span>
-                <div className="text-sunset-peach/70 text-sm">Studying data analysis, machine learning, and robotics. Working on real-world projects and research.</div>
-              </li>
-              {/* Add more experience items here */}
+            {experience.map((exp, idx) => (
+                <li key={idx} className="bg-sunset-brown/60 rounded-lg px-4 py-3">
+                <span className="font-medium">{exp.title}</span> @ {exp.company}
+                <span className="text-xs text-sunset-peach/60"> {exp.period}</span>
+                <div className="text-sunset-peach/70 text-sm">{exp.description}</div>
+                </li>
+            ))}
             </ul>
           </motion.div>
           {/* Projects section */}
@@ -132,7 +162,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        <div className="text-xs text-sunset-peach/40">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
         </section>
       </main>
     </>
