@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 :root {
   --sunset-brown: #2d1a14;
