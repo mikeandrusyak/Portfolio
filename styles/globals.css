@@ -3,14 +3,20 @@
 @config "../tailwind.config.js";
 
 :root {
-  --sunset-brown: #2d1a14;
+  --sunset-brown: #b07a66;
   --sunset-orange: #ff7e5f;
-  --sunset-peach: #feb47b;
+  --sunset-peach: #ffcf9f;
+  --text-dark: #2d1a14;
 }
 
 body {
-  background: linear-gradient(180deg, var(--sunset-brown) 0%, var(--sunset-orange) 60%, var(--sunset-peach) 100%);
-  color: var(--sunset-peach);
+  background: linear-gradient(
+    180deg,
+    var(--sunset-brown) 0%,
+    var(--sunset-orange) 60%,
+    var(--sunset-peach) 100%
+  );
+  color: var(--text-dark);
   font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
   min-height: 100vh;
 }
