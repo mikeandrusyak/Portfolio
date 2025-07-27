@@ -35,9 +35,9 @@ export default function Home() {
         <meta name="description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <main className="min-h-screen bg-gradient-to-b from-sunset-brown via-sunset-orange to-sunset-peach text-sunset-peach flex flex-col md:flex-row md:gap-8">
+      <main className="relative bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] min-h-screen text-sunset-peach flex flex-col md:flex-row md:gap-4">
         {/* Sidebar */}
-        <aside className="flex flex-col justify-between w-full md:w-1/2 md:flex-none px-6 md:px-12 py-8 md:py-16 rounded-none z-10 md:sticky md:top-0 md:h-screen md:bg-sunset-brown/80">
+        <aside className="flex flex-col justify-between w-full md:w-1/2 md:flex-none px-6 md:px-12 py-8 md:py-16 rounded-none z-10 md:sticky md:top-0 md:h-screen">
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
