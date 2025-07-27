@@ -37,7 +37,7 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-gradient-to-b from-sunset-brown via-sunset-orange to-sunset-peach text-sunset-peach flex flex-col md:flex-row md:gap-8">
         {/* Sidebar */}
-        <aside className="flex flex-col justify-between w-full md:w-1/2 md:flex-none bg-sunset-brown/80 px-6 md:px-12 py-8 md:py-16 rounded-none md:rounded-r-3xl shadow-xl md:border-r border-sunset-orange/30 z-10 md:sticky md:top-0">
+        <aside className="flex flex-col justify-between w-full md:w-1/2 md:flex-none px-6 md:px-12 py-8 md:py-16 rounded-none z-10 md:sticky md:top-0 md:h-screen md:bg-sunset-brown/80">
           <div>
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
@@ -49,27 +49,28 @@ export default function Home() {
             </motion.h1>
             <p className="text-sunset-peach/80 text-lg mb-6">Data Science Student at FHNW</p>
             <p className="text-sunset-peach/70 text-base mb-8">Explorer of data, algorithms and robots</p>
-            <div className="flex flex-col gap-3">
-              <Button as="a" href="https://github.com/mikeandrusyak" variant="sunset" size="md" target="_blank">
-                <Github className="w-4 h-4 mr-2" /> GitHub
-              </Button>
-              <Button as="a" href="https://linkedin.com/in/mikeandrusyak" variant="sunset" size="md" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 8.25V7.125A2.625 2.625 0 0 0 13.875 4.5h-3.75A2.625 2.625 0 0 0 7.5 7.125v1.125M6.75 19.5h10.5a2.25 2.25 0 0 0 2.25-2.25V8.25a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 8.25v9a2.25 2.25 0 0 0 2.25 2.25ZM9 10.5v6M12 10.5v6m3-6v6" /></svg>
-                LinkedIn
-              </Button>
-              <Button as="a" href="mailto:mykhailo.andrusiak@students.fhnw.ch" variant="peach" size="md">
-                <Mail className="w-4 h-4 mr-2" /> Email
-              </Button>
-              <Button as="a" href="tel:+41791234567" variant="peach" size="md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15 .621 0 1.125-.504 1.125-1.125v-2.625a1.125 1.125 0 0 0-1.125-1.125c-1.636 0-3.21-.26-4.687-.75a1.125 1.125 0 0 0-1.094.21l-2.25 1.687a12.042 12.042 0 0 1-5.25-5.25l1.687-2.25a1.125 1.125 0 0 0 .21-1.094 16.978 16.978 0 0 1-.75-4.687A1.125 1.125 0 0 0 4.875 2.25H2.25A1.125 1.125 0 0 0 1.125 3.375c0 8.284 6.716 15 15 15z" /></svg>
-                +41 79 123 45 67
-              </Button>
+            {/* Контакти-іконки */}
+            <div className="hidden" />
+          </div>
+          <div className="flex flex-col items-center gap-6 mt-12">
+            <div className="flex flex-row justify-center gap-8">
+              <a href="https://github.com/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="GitHub">
+                <Github className="w-8 h-8" />
+              </a>
+              <a href="https://linkedin.com/in/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="4" fill="currentColor" className="text-sunset-peach/20"/><path strokeLinecap="round" strokeLinejoin="round" d="M8 11v5m4-5v5m4-5v5" stroke="currentColor" strokeWidth="1.5"/></svg>
+              </a>
+              <a href="mailto:mykhailo.andrusiak@students.fhnw.ch" className="hover:text-sunset-orange transition-colors" aria-label="Email">
+                <Mail className="w-8 h-8" />
+              </a>
+              <a href="tel:+41791234567" className="hover:text-sunset-orange transition-colors" aria-label="Phone">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><rect width="20" height="20" x="2" y="2" rx="4" fill="currentColor" className="text-sunset-peach/20"/><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15 .621 0 1.125-.504 1.125-1.125v-2.625a1.125 1.125 0 0 0-1.125-1.125c-1.636 0-3.21-.26-4.687-.75a1.125 1.125 0 0 0-1.094.21l-2.25 1.687a12.042 12.042 0 0 1-5.25-5.25l1.687-2.25a1.125 1.125 0 0 0 .21-1.094 16.978 16.978 0 0 1-.75-4.687A1.125 1.125 0 0 0 4.875 2.25H2.25A1.125 1.125 0 0 0 1.125 3.375c0 8.284 6.716 15 15 15z" /></svg>
+              </a>
             </div>
           </div>
-          <div className="text-xs text-sunset-peach/40 mt-8">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
         </aside>
         {/* Main content */}
-        <section className="w-full md:flex-1 px-4 py-10 md:py-24 overflow-auto">
+        <section className="w-full md:flex-1 px-4 py-10 md:py-24 h-screen md:h-auto overflow-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,6 +132,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        <div className="text-xs text-sunset-peach/40">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
         </section>
       </main>
     </>
