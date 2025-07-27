@@ -4,8 +4,6 @@ import clsx from 'clsx';
 
 const cardColors = [
   'from-sunset-brown to-sunset-orange',
-  'from-sunset-orange to-sunset-peach',
-  'from-sunset-peach to-sunset-brown',
   'from-sunset-orange to-sunset-brown',
 ];
 

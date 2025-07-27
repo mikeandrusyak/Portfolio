@@ -90,7 +90,7 @@ export default function Home() {
               <a href="mailto:mykhailo.andrusiak@students.fhnw.ch" className="hover:text-sunset-orange transition-colors" aria-label="Email">
                 <Mail className="w-8 h-8" />
               </a>
-              <a href="tel:+41791234567" className="hover:text-sunset-orange transition-colors" aria-label="Phone">
+              <a href="tel:+41795275247" className="hover:text-sunset-orange transition-colors" aria-label="Phone">
                 <Phone className="w-8 h-8" />
               </a>
             </div>
