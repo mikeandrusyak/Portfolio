@@ -12,6 +12,15 @@ export default function Home() {
       <Head>
         <title>Mykhailo Andrusiak | Portfolio</title>
         <meta name="description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
+        <meta property="og:description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        <meta property="og:image" content="/favicon.svg" />
+        {/* Twitter card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mykhailo Andrusiak | Portfolio" />
+        <meta name="twitter:description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        <meta name="twitter:image" content="/favicon.svg" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className="relative bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] min-h-screen text-sunset-peach flex flex-col md:flex-row md:gap-4">
