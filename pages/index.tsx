@@ -3,56 +3,8 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const projects = [
-  {
-    title: 'Demographic Challenge',
-    description: 'Exploration of education, equality, and ownership in Switzerland.',
-    github: 'https://github.com/mikeandrusyak/Demografie-Challenge',
-  },
-  {
-    title: 'Correlation Visualization',
-    description: 'Comparing correlation plots using Plotly in R for datasets of different sizes.',
-    github: 'https://github.com/mikeandrusyak/correlation_with_plotly',
-  },
-  {
-    title: 'Delivery Time Simulation',
-    description: 'Simulation of package delivery delays using Python and Jupyter Notebook.',
-    github: 'https://github.com/mikeandrusyak/simulation_of_the_delivery_time',
-  },
-  {
-    title: 'Robot Challenge',
-    description: 'Training a robot car to follow a map and perform tasks. Includes Jupyter Notebook and video.',
-    github: 'https://github.com/mikeandrusyak/robot_challenge',
-  },
-];
-
-const experience = [
-  {
-    title: 'DevOps Engineer',
-    company: 'Alten',
-    period: 'Jan 2024 – Present',
-    description: 'Working for ABB via ALTEN. Focus on CI/CD migration and improvements...',
-  },
-  {
-    title: 'Data Science Student',
-    company: 'FHNW',
-    period: 'Sep 2024 – Present',
-    description: 'Studying data analysis, machine learning, and robotics. Working on real-world projects and research...',
-  },
-  {
-    title: 'CI/CD Intern',
-    company: 'ABB',
-    period: 'Jan 2024 – Jun 2025',
-    description: 'Ansible provisioning for Automation and Configuration Management in build system...',
-  },
-  {
-    title: 'Data Science Intern',
-    company: 'Retrostyle Games',
-    period: 'Jul 2022 – Sep 2022',
-    description: 'Designed algorithms; cleaned and analyzed datasets...',
-  },
-];
+import { projects } from '../data/projects';
+import { experience } from '../data/experience';
 
 export default function Home() {
   return (
