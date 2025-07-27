@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
+import { Header } from '../components/ui/header';
 import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -62,6 +63,7 @@ export default function Home() {
         <meta name="description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
+      <Header />
       <main className="relative bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] min-h-screen text-sunset-peach flex flex-col md:flex-row md:gap-4">
         {/* Sidebar */}
         <aside className="flex flex-col justify-between w-full md:w-1/2 md:flex-none px-6 md:px-20 py-8 md:py-16 z-10 md:sticky md:top-0 md:h-screen">
@@ -99,6 +101,7 @@ export default function Home() {
         </aside>
         {/* Main content */}
         <section className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20 h-screen md:h-auto overflow-auto">
+          <section id="about">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,7 +118,9 @@ export default function Home() {
           >
             Hi! I'm Mykhailo, a Data Science student at FHNW passionate about data, algorithms, and robotics. I love building tools that make sense of complex information and exploring new technologies.
           </motion.p>
+          </section>
           {/* Experience section (add your experience here) */}
+          <section id="experience">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,14 +138,15 @@ export default function Home() {
             ))}
             </ul>
           </motion.div>
+          </section>
           {/* Projects section */}
+          <section id="projects">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="text-2xl font-semibold text-sunset-peach mb-6"
-            id="projects"
           >
             Projects
           </motion.h3>
@@ -162,6 +168,7 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          </section>
         </section>
       </main>
     </>
