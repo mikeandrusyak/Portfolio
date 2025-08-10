@@ -3,7 +3,7 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { projects } from '../data/projects';
+import { homepageProjects } from '../data/projects';
 import { experience } from '../data/experience';
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
             </motion.h1>
             <p className="text-sunset-peach/80 text-lg mb-6">Data Science Student at FHNW</p>
             <p className="text-sunset-peach/70 text-base mb-8">Explorer of data, algorithms and robots</p>
-            {/* Контакти-іконки */}
+            {/* Contact icons */}
             <div className="hidden" />
           </div>
           <div className="flex flex-col items-left gap-6 mt-12">
@@ -95,18 +95,23 @@ export default function Home() {
             </ul>
           </motion.div>
           {/* Projects section */}
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-2xl font-semibold text-sunset-peach mb-6"
-            id="projects"
-          >
-            Projects
-          </motion.h3>
+          <div className="flex items-center justify-between mb-6">
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="text-2xl font-semibold text-sunset-peach"
+              id="projects"
+            >
+              Projects
+            </motion.h3>
+            <Button as="a" href="/projects" variant="outline" size="md" className="border-sunset-peach/40">
+              All Projects →
+            </Button>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {projects.map((project, idx) => (
+            {homepageProjects.map((project, idx) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
