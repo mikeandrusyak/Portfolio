@@ -56,20 +56,59 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-left gap-6 mt-12">
             <div className="flex flex-row justify-left gap-8">
-              <a href="https://github.com/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="GitHub">
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.7 }}
+                href="https://github.com/mikeandrusyak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-sunset-orange transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="w-8 h-8" />
-              </a>
-              <a href="https://www.linkedin.com/in/qkw/" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="LinkedIn">
+              </motion.a>
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.7 }}
+                href="https://www.linkedin.com/in/qkw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-sunset-orange transition-colors"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="w-8 h-8" />
-              </a>
-              <a href="mailto:mykhailo.andrusiak@students.fhnw.ch" className="hover:text-sunset-orange transition-colors" aria-label="Email">
+              </motion.a>
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.7 }}
+                href="mailto:mykhailo.andrusiak@students.fhnw.ch"
+                className="hover:text-sunset-orange transition-colors"
+                aria-label="Email"
+              >
                 <Mail className="w-8 h-8" />
-              </a>
-              <a href="tel:+41795275247" className="hover:text-sunset-orange transition-colors" aria-label="Phone">
+              </motion.a>
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.7 }}
+                href="tel:+41795275247"
+                className="hover:text-sunset-orange transition-colors"
+                aria-label="Phone"
+              >
                 <Phone className="w-8 h-8" />
-              </a>
+              </motion.a>
             </div>
-            <div className="text-xs text-sunset-peach/40">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.7 }}
+              className="text-xs text-sunset-peach/40"
+            >
+              © {new Date().getFullYear()} Mykhailo Andrusiak
+            </motion.div>
           </div>
         </aside>
         {/* Main content */}
