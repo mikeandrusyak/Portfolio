@@ -56,17 +56,41 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-left gap-6 mt-12">
             <div className="flex flex-row justify-left gap-8">
-              <a href="https://github.com/mikeandrusyak" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="GitHub">
+              <a
+                href="https://github.com/mikeandrusyak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-sunset-orange transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="w-8 h-8" />
+                <span className="text-sm">GitHub</span>
               </a>
-              <a href="https://www.linkedin.com/in/qkw/" target="_blank" rel="noopener noreferrer" className="hover:text-sunset-orange transition-colors" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/qkw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-sunset-orange transition-colors"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="w-8 h-8" />
+                <span className="text-sm">LinkedIn</span>
               </a>
-              <a href="mailto:mykhailo.andrusiak@students.fhnw.ch" className="hover:text-sunset-orange transition-colors" aria-label="Email">
+              <a
+                href="mailto:mykhailo.andrusiak@students.fhnw.ch"
+                className="flex items-center gap-2 hover:text-sunset-orange transition-colors"
+                aria-label="Email"
+              >
                 <Mail className="w-8 h-8" />
+                <span className="text-sm">Email</span>
               </a>
-              <a href="tel:+41795275247" className="hover:text-sunset-orange transition-colors" aria-label="Phone">
+              <a
+                href="tel:+41795275247"
+                className="flex items-center gap-2 hover:text-sunset-orange transition-colors"
+                aria-label="Phone"
+              >
                 <Phone className="w-8 h-8" />
+                <span className="text-sm">Phone</span>
               </a>
             </div>
             <div className="text-xs text-sunset-peach/40">© {new Date().getFullYear()} Mykhailo Andrusiak</div>
