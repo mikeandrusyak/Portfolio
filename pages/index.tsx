@@ -161,11 +161,26 @@ export default function Home() {
             <h3 className="text-2xl font-semibold mb-4 text-sunset-peach">Experience</h3>
             <ul className="space-y-3">
             {experience.map((exp, idx) => (
-                <li key={idx} className="bg-sunset-brown/60 rounded-lg px-4 py-3">
-                <span className="font-medium">{exp.title}</span> @ {exp.company}
-                <span className="text-xs text-sunset-peach/60"> {exp.period}</span>
-                <div className="text-sunset-peach/70 text-sm">{exp.description}</div>
-                </li>
+              <li key={idx} className="bg-sunset-brown/60 rounded-lg px-4 py-3">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <span className="font-medium">{exp.title}</span>
+                  <span className="opacity-70">@ {exp.company}</span>
+                  <span className="text-xs text-sunset-peach/60">{exp.period}</span>
+                </div>
+                <div className="text-sunset-peach/70 text-sm mt-1">{exp.description}</div>
+                {Array.isArray((exp as any).skills) && (
+                  <ul className="flex flex-wrap gap-2 mt-3">
+                    {(exp as any).skills.map((skill: string) => (
+                      <li
+                        key={skill}
+                        className="text-[10px] uppercase tracking-wide bg-sunset-brown/70 border border-sunset-peach/10 rounded px-2 py-1 text-sunset-peach/70 hover:text-sunset-peach transition-colors"
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             ))}
             </ul>
           </motion.div>
