@@ -118,6 +118,7 @@ export default function Home() {
                   title={project.title}
                   description={project.description}
                   github={project.github}
+                  tags={project.tags}
                   colorIdx={idx}
                 />
               </motion.div>

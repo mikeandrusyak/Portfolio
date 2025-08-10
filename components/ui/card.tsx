@@ -7,7 +7,7 @@ const cardColors = [
   'from-sunset-orange to-sunset-brown',
 ];
 
-export function Card({ title, description, github, colorIdx }: { title: string; description: string; github: string; colorIdx: number }) {
+export function Card({ title, description, github, tags, colorIdx }: { title: string; description: string; github: string; tags: string[]; colorIdx: number }) {
   return (
     <div
       className={clsx(
@@ -25,6 +25,16 @@ export function Card({ title, description, github, colorIdx }: { title: string; 
         <p className="text-sunset-peach/90 mb-4 text-base">
           {description}
         </p>
+        <ul className="flex flex-wrap gap-2 mt-2">
+          {tags.map((tag) => (
+            <li
+              key={tag}
+              className="bg-sunset-brown/60 text-sunset-peach text-xs px-2 py-1 rounded"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="flex items-center mt-auto">
         <Link href={github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sunset-peach/80 hover:text-sunset-peach transition-colors">
