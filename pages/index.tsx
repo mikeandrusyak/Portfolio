@@ -11,15 +11,15 @@ export default function Home() {
     <>
       <Head>
         <title>Mykhailo Andrusiak | Portfolio</title>
-        <meta name="description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        <meta name="description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
         {/* Open Graph tags */}
         <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
-        <meta property="og:description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        <meta property="og:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
         <meta property="og:image" content="/favicon.svg" />
         {/* Twitter card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mykhailo Andrusiak | Portfolio" />
-        <meta name="twitter:description" content="Data Science Student at FHNW | Explorer of data, algorithms and robots" />
+        <meta name="twitter:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
         <meta name="twitter:image" content="/favicon.svg" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
@@ -35,8 +35,22 @@ export default function Home() {
             >
               Mykhailo Andrusiak
             </motion.h1>
-            <p className="text-sunset-peach/80 text-lg mb-6">Data Science Student at FHNW</p>
-            <p className="text-sunset-peach/70 text-base mb-8">Explorer of data, algorithms and robots</p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+            >
+              Data Science Student at FHNW, DevOps Engineer for ABB
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+            >
+              Explorer of data, algorithms and robots
+            </motion.p>
             {/* Contact icons */}
             <div className="hidden" />
           </div>
@@ -72,9 +86,31 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="mb-10 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
           >
-            Hi! I'm Mykhailo, a Data Science student at FHNW passionate about data, algorithms, and robotics. I love building tools that make sense of complex information and exploring new technologies.
+            Hi, I’m Mykhailo Andrusiak — a Data Science student at FHNW and a DevOps Engineer at ABB,
+            passionate about transforming complex data into solutions that drive impact.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+          >
+            I specialize in data analysis, machine learning, and automation, 
+            combining technical expertise with a problem-solving mindset. 
+            My work ranges from building CI/CD pipelines and optimizing cloud infrastructure
+            to designing data-driven tools that solve real-world challenges.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+          >
+            I enjoy creating systems that make life simpler and smarter — 
+            whether it’s automating workflows, uncovering patterns in messy datasets,
+            or turning raw data into strategies that work.
           </motion.p>
           {/* Experience section (add your experience here) */}
           <motion.div

@@ -2,7 +2,7 @@ export const experience = [
   {
     title: 'DevOps Engineer',
     company: 'Alten',
-    period: 'Jan 2024 – Present',
+    period: 'Jun 2025 – Present',
     description: 'Working for ABB via ALTEN. Focus on CI/CD migration and improvements...',
   },
   {
