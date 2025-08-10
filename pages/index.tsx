@@ -5,6 +5,8 @@ import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { homepageProjects } from '../data/projects';
 import { experience } from '../data/experience';
+import { useState } from 'react';
+import { ChevronDown, ChevronUp, ListChecks } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -160,28 +162,9 @@ export default function Home() {
           >
             <h3 className="text-2xl font-semibold mb-4 text-sunset-peach">Experience</h3>
             <ul className="space-y-3">
-            {experience.map((exp, idx) => (
-              <li key={idx} className="bg-sunset-brown/60 rounded-lg px-4 py-3">
-                <div className="flex flex-wrap items-baseline gap-2">
-                  <span className="font-medium">{exp.title}</span>
-                  <span className="opacity-70">@ {exp.company}</span>
-                  <span className="text-xs text-sunset-peach/60">{exp.period}</span>
-                </div>
-                <div className="text-sunset-peach/70 text-sm mt-1">{exp.description}</div>
-                {Array.isArray((exp as any).skills) && (
-                  <ul className="flex flex-wrap gap-2 mt-3">
-                    {(exp as any).skills.map((skill: string) => (
-                      <li
-                        key={skill}
-                        className="text-[10px] uppercase tracking-wide bg-sunset-brown/70 border border-sunset-peach/10 rounded px-2 py-1 text-sunset-peach/70 hover:text-sunset-peach transition-colors"
-                      >
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+              {experience.map((exp, idx) => (
+                <ExperienceItem key={idx} exp={exp} />
+              ))}
             </ul>
           </motion.div>
           {/* Projects section */}
@@ -222,5 +205,53 @@ export default function Home() {
         </section>
       </main>
     </>
+  );
+}
+
+function ExperienceItem({ exp }: { exp: any }) {
+  const [open, setOpen] = useState(false);
+  const hasAchievements = Array.isArray(exp.achievements) && exp.achievements.length > 0;
+  return (
+    <li className="bg-sunset-brown/60 rounded-lg px-4 py-3">
+      <div className="flex flex-wrap items-baseline gap-2">
+        <span className="font-medium">{exp.title}</span>
+        <span className="opacity-70">@ {exp.company}</span>
+        <span className="text-xs text-sunset-peach/60 ml-auto">{exp.period}</span>
+      </div>
+      <div className="text-sunset-peach/70 text-sm mt-1">{exp.description}</div>
+      {Array.isArray(exp.skills) && (
+        <ul className="flex flex-wrap gap-2 mt-3">
+          {exp.skills.map((skill: string) => (
+            <li
+              key={skill}
+              className="text-[10px] uppercase tracking-wide bg-sunset-brown/70 border border-sunset-peach/10 rounded px-2 py-1 text-sunset-peach/70 hover:text-sunset-peach transition-colors"
+            >
+              {skill}
+            </li>
+          ))}
+        </ul>
+      )}
+      {hasAchievements && (
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setOpen(o => !o)}
+            className="group flex items-center gap-2 text-xs font-semibold tracking-wide text-sunset-peach/70 hover:text-sunset-peach transition-colors"
+            aria-expanded={open}
+          >
+            <ListChecks className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+            {open ? 'Hide Achievement ':' Show solved tasks and achievements'}
+            {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+          {open && (
+            <ul className="mt-2 space-y-1 text-sunset-peach/70 text-xs list-disc list-inside animate-fadeIn">
+              {exp.achievements.map((a: string, i: number) => (
+                <li key={i} className="leading-relaxed">{a}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </li>
   );
 }
