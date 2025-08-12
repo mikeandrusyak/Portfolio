@@ -5,18 +5,50 @@ import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { homepageProjects } from '../data/projects';
 import { experience } from '../data/experience';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronUp, ListChecks } from 'lucide-react';
 
 export default function Home() {
+  const [active, setActive] = useState<'about' | 'experience' | 'projects'>('about');
+  const contentRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root || typeof IntersectionObserver === 'undefined') return;
+    const mapping: Record<string, 'about' | 'experience' | 'projects'> = {
+      'about-text': 'about',
+      experience: 'experience',
+      projects: 'projects',
+    };
+    const targets = Object.keys(mapping)
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (targets.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the most visible intersecting target
+        let best: { key: 'about' | 'experience' | 'projects'; ratio: number } | null = null;
+        for (const entry of entries) {
+          const key = mapping[(entry.target as HTMLElement).id];
+          if (!key) continue;
+          const ratio = entry.isIntersecting ? entry.intersectionRatio : 0;
+          if (!best || ratio > best.ratio) best = { key, ratio };
+        }
+        if (best && best.ratio > 0) setActive(best.key);
+      },
+      { root, threshold: [0.15, 0.3, 0.6, 0.9], rootMargin: '0px 0px -25% 0px' }
+    );
+  targets.forEach((t) => observer.observe(t));
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
       <Head>
         <title>Mykhailo Andrusiak | Portfolio</title>
         <meta name="description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
-        {/* Open Graph tags */}
-        <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
-        <meta property="og:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
+  {/* Open Graph tags */}
+  <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
+  <meta property="og:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
         <meta property="og:image" content="/favicon.svg" />
         {/* Twitter card tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -53,6 +85,73 @@ export default function Home() {
             >
               Explorer of data, algorithms and robots
             </motion.p>
+          </div>
+          <div>
+            {/* Agenda / Quick nav */}
+            <nav aria-label="Section navigation" className="mt-6">
+              <ul className="list-none space-y-4">
+                <li>
+                  <a
+                    href="#about-text"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('about-text')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    aria-current={active === 'about' ? 'true' : undefined}
+                    className={`group flex items-center gap-4 transition-colors ${
+                      active === 'about' ? 'text-sunset-peach' : 'text-sunset-peach/80 hover:text-sunset-peach'
+                    }`}
+                  >
+                    <span
+                      className={`h-[2px] rounded transition-all duration-300 ${
+                        active === 'about' ? 'w-16 bg-sunset-peach' : 'w-10 bg-sunset-peach/40 group-hover:bg-sunset-peach/70'
+                      }`}
+                    />
+                    <span className="text-lg md:text-xl font-normal tracking-normal normal-case">About</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#experience"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    aria-current={active === 'experience' ? 'true' : undefined}
+                    className={`group flex items-center gap-4 transition-colors ${
+                      active === 'experience' ? 'text-sunset-peach' : 'text-sunset-peach/80 hover:text-sunset-peach'
+                    }`}
+                  >
+                    <span
+                      className={`h-[2px] rounded transition-all duration-300 ${
+                        active === 'experience' ? 'w-16 bg-sunset-peach' : 'w-10 bg-sunset-peach/40 group-hover:bg-sunset-peach/70'
+                      }`}
+                    />
+                    <span className="text-lg md:text-xl font-normal tracking-normal normal-case">Experience</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#projects"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    aria-current={active === 'projects' ? 'true' : undefined}
+                    className={`group flex items-center gap-4 transition-colors ${
+                      active === 'projects' ? 'text-sunset-peach' : 'text-sunset-peach/80 hover:text-sunset-peach'
+                    }`}
+                  >
+                    <span
+                      className={`h-[2px] rounded transition-all duration-300 ${
+                        active === 'projects' ? 'w-16 bg-sunset-peach' : 'w-10 bg-sunset-peach/40 group-hover:bg-sunset-peach/70'
+                      }`}
+                    />
+                    <span className="text-lg md:text-xl font-normal tracking-normal normal-case">Projects</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
             {/* Contact icons */}
             <div className="hidden" />
           </div>
@@ -114,12 +213,13 @@ export default function Home() {
           </div>
         </aside>
         {/* Main content */}
-  <section className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20 md:h-screen md:overflow-auto">
+  <section ref={contentRef} className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20 md:h-screen md:overflow-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-3xl md:text-4xl font-semibold text-sunset-peach mb-8 text-left"
+            className="text-2xl font-semibold mb-4 text-sunset-peach"
+            id="about"
           >
             About Me
           </motion.h2>
@@ -127,7 +227,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl scroll-mt-16 md:scroll-mt-24"
+            id="about-text"
           >
             Hi, I’m Mykhailo Andrusiak — a Data Science student at FHNW and a DevOps Engineer at ABB,
             passionate about transforming complex data into solutions that drive impact.
@@ -147,7 +248,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
-            className="mb-6 text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
+            className="text-lg md:text-xl text-sunset-peach/80 max-w-2xl"
           >
             I enjoy creating systems that make life simpler and smarter — 
             whether it’s automating workflows, uncovering patterns in messy datasets,
@@ -158,9 +259,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="mb-14"
+            className="mb-6"
+            id="experience-top"
           >
-            <h3 className="text-2xl font-semibold mb-4 text-sunset-peach">Experience</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-sunset-peach pt-4" id="experience">Experience</h3>
             <ul className="space-y-3">
               {experience.map((exp, idx) => (
                 <ExperienceItem key={idx} exp={exp} />
@@ -168,7 +270,7 @@ export default function Home() {
             </ul>
           </motion.div>
           {/* Projects section */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-6 scroll-mt-16 md:scroll-mt-24 pt-4" id="projects-top">
             <motion.h3
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +339,7 @@ function ExperienceItem({ exp }: { exp: any }) {
           <button
             type="button"
             onClick={() => setOpen(o => !o)}
-            className="group flex items-center gap-2 text-xs font-semibold tracking-wide text-sunset-peach/70 hover:text-sunset-peach transition-colors"
+            className="group flex items-center gap-2 text-sm font-semibold tracking-wide text-sunset-peach/70 hover:text-sunset-peach transition-colors"
             aria-expanded={open}
           >
             <ListChecks className="w-4 h-4 opacity-70 group-hover:opacity-100" />
@@ -245,7 +347,7 @@ function ExperienceItem({ exp }: { exp: any }) {
             {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
           {open && (
-            <ul className="mt-2 space-y-1 text-sunset-peach/70 text-xs list-disc list-inside animate-fadeIn">
+            <ul className="mt-2 space-y-1 text-sunset-peach/70 text-sm list-disc list-inside animate-fadeIn">
               {exp.achievements.map((a: string, i: number) => (
                 <li key={i} className="leading-relaxed">{a}</li>
               ))}
