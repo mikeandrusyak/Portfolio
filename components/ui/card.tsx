@@ -7,7 +7,7 @@ const cardColors = [
   'from-sunset-orange to-sunset-brown',
 ];
 
-export function Card({ title, description, github, tags, colorIdx }: { title: string; description: string; github: string; tags: string[]; colorIdx: number }) {
+export function Card({ title, description, github, tags, colorIdx, href }: { title: string; description: string; github: string; tags: string[]; colorIdx: number; href?: string }) {
   return (
     <div
       className={clsx(
@@ -20,7 +20,13 @@ export function Card({ title, description, github, tags, colorIdx }: { title: st
     >
       <div>
         <h3 className="text-xl font-semibold text-sunset-peach mb-2 drop-shadow">
-          {title}
+          {href ? (
+            <Link href={href} className="hover:underline">
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
         </h3>
         <p className="text-sunset-peach/90 mb-4 text-base">
           {description}

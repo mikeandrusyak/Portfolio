@@ -197,6 +197,7 @@ export default function Home() {
                   description={project.description}
                   github={project.github}
                   tags={project.tags}
+                  href={(project as any).slug ? `/projects/${(project as any).slug}` : project.href}
                   colorIdx={idx}
                 />
               </motion.div>
