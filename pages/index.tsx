@@ -107,7 +107,7 @@ export default function Home() {
                         active === 'about' ? 'w-16 bg-sunset-peach' : 'w-10 bg-sunset-peach/40 group-hover:bg-sunset-peach/70'
                       }`}
                     />
-                    <span className="text-lg md:text-xl font-normal tracking-normal normal-case">About</span>
+                    <span className="text-lg md:text-xl font-normal tracking-normal normal-case">About Me</span>
                   </a>
                 </li>
                 <li>
