@@ -39,7 +39,7 @@ export default function ProjectDetailPage() {
 
           <div className="rounded-xl overflow-hidden border border-sunset-brown/40 shadow-lg bg-sunset-brown/40 flex-1 min-h-0 mb-3">
             {project.embedUrl ? (
-              <iframe src={project.embedUrl} title={project.title} className="w-full h-full bg-white" />
+              <iframe src={project.embedUrl} title={project.title} loading="lazy" className="w-full h-full bg-white" />
             ) : (
               <div className="p-6 text-sunset-peach/80">No embedded content configured.</div>
             )}
