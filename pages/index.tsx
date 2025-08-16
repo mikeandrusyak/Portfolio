@@ -90,7 +90,7 @@ export default function Home() {
             {/* Agenda / Quick nav */}
             <nav aria-label="Section navigation" className="mt-6">
               <ul className="list-none space-y-4">
-                <li>
+                <motion.li initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }}>
                   <a
                     href="#about-text"
                     onClick={(e) => {
@@ -109,8 +109,8 @@ export default function Home() {
                     />
                     <span className="text-lg md:text-xl font-normal tracking-normal normal-case">About Me</span>
                   </a>
-                </li>
-                <li>
+                </motion.li>
+                <motion.li initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
                   <a
                     href="#experience"
                     onClick={(e) => {
@@ -129,8 +129,8 @@ export default function Home() {
                     />
                     <span className="text-lg md:text-xl font-normal tracking-normal normal-case">Experience</span>
                   </a>
-                </li>
-                <li>
+                </motion.li>
+                <motion.li initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
                   <a
                     href="#projects"
                     onClick={(e) => {
@@ -149,7 +149,7 @@ export default function Home() {
                     />
                     <span className="text-lg md:text-xl font-normal tracking-normal normal-case">Projects</span>
                   </a>
-                </li>
+                </motion.li>
               </ul>
             </nav>
             {/* Contact icons */}
