@@ -21,7 +21,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     const html = raw.replace('</head>', `${css}\n</head>`);
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(200).send(html);
-  } catch (err) {
+  } catch {
   res.status(404).json({ error: 'demographic-challenge content not found' });
   }
 }

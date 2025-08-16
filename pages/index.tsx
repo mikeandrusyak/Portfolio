@@ -3,8 +3,8 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Github, Mail, Phone, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { homepageProjects } from '../data/projects';
-import { experience } from '../data/experience';
+import { homepageProjects, type Project } from '../data/projects';
+import { experience, type Experience } from '../data/experience';
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronUp, ListChecks } from 'lucide-react';
 
@@ -286,7 +286,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {homepageProjects.map((project, idx) => (
+            {homepageProjects.map((project: Project, idx: number) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -299,7 +299,7 @@ export default function Home() {
                   description={project.description}
                   github={project.github}
                   tags={project.tags}
-                  href={(project as any).slug ? `/projects/${(project as any).slug}` : project.href}
+                    href={project.slug ? `/projects/${project.slug}` : project.href}
                   colorIdx={idx}
                 />
               </motion.div>
@@ -311,7 +311,7 @@ export default function Home() {
   );
 }
 
-function ExperienceItem({ exp }: { exp: any }) {
+function ExperienceItem({ exp }: { exp: Experience }) {
   const [open, setOpen] = useState(false);
   const hasAchievements = Array.isArray(exp.achievements) && exp.achievements.length > 0;
   return (
@@ -348,7 +348,7 @@ function ExperienceItem({ exp }: { exp: any }) {
           </button>
           {open && (
             <ul className="mt-2 space-y-1 text-sunset-peach/70 text-sm list-disc list-inside animate-fadeIn">
-              {exp.achievements.map((a: string, i: number) => (
+                {(exp.achievements ?? []).map((a: string, i: number) => (
                 <li key={i} className="leading-relaxed">{a}</li>
               ))}
             </ul>

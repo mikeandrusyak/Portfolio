@@ -62,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Cache at the edge for an hour; allow SWR for a day
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
     res.status(200).send(html);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Failed to fetch or process remote URL' });
   }
 }

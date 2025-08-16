@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useState, useMemo } from 'react';
-import { projects } from '../data/projects';
+import { projects, type Project } from '../data/projects';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   };
   const clear = () => setActive([]);
 
-  const filtered = useMemo(() => {
+  const filtered: Project[] = useMemo(() => {
     if (active.length === 0) return projects;
     return projects.filter(p => active.every(a => p.tags.map(t => t.toLowerCase()).includes(a.toLowerCase())));
   }, [active]);
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((project, idx) => (
+            {filtered.map((project: Project, idx: number) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                   description={project.description}
                   github={project.github}
                   tags={project.tags}
-                  href={(project as any).slug ? `/projects/${(project as any).slug}` : project.href}
+                  href={project.slug ? `/projects/${project.slug}` : project.href}
                   colorIdx={idx}
                 />
               </motion.div>
