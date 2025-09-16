@@ -29,6 +29,16 @@ export const projects = [
     tags: ['Python', 'Search public datasets', 'Render artificial data', 'Statistic', 'Simulation models'],
     featured: true,
   },
+  {
+    title: 'Robot Challenge',
+    description: 'Autonomous robot navigation and control system using computer vision and sensor data processing.',
+    github: 'https://github.com/mikeandrusyak/robot_challenge',
+    slug: 'robot-challenge-remote',
+    embedUrl: '/api/projects/remote?url=https%3A%2F%2Fmikeandrusyak.github.io%2Frobot_challenge%2F',
+    href: '/projects/robot-challenge-remote',
+    tags: ['Python', 'OpenCV', 'Computer Vision', 'Robotics', 'Autonomous Navigation', 'Sensor Data Processing', 'Event Logging'],
+    featured: true,
+  },
 ];
 
 export type Project = typeof projects[number];
