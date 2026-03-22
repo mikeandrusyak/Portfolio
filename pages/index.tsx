@@ -213,7 +213,7 @@ export default function Home() {
           </div>
         </aside>
         {/* Main content */}
-  <section ref={contentRef} className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20 md:h-screen md:overflow-auto">
+  <section ref={contentRef} className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
