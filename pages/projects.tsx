@@ -5,9 +5,6 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { motion } from 'framer-motion';
 
-// Unique tags helper
-const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
-
 export default function ProjectsPage() {
   const [active, setActive] = useState<string[]>([]);
   const toggle = (tag: string) => {
@@ -20,6 +17,12 @@ export default function ProjectsPage() {
     return projects.filter(p => active.every(a => p.tags.map(t => t.toLowerCase()).includes(a.toLowerCase())));
   }, [active]);
 
+  // Show only tags that are relevant to current filtered projects
+  const availableTags = useMemo(() => {
+    const tags = filtered.flatMap(p => p.tags);
+    return Array.from(new Set(tags)).sort();
+  }, [filtered]);
+
   return (
     <>
       <Head>
@@ -30,12 +33,17 @@ export default function ProjectsPage() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-10">
             <motion.h1 initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-3xl md:text-4xl font-bold">All Projects</motion.h1>
-            <Button as="a" href="/" variant="outline" className="border-sunset-peach/40">← Back</Button>
+            <div className="flex items-center gap-3">
+              {active.length > 0 && (
+                <Button onClick={clear} variant="outline" className="border-sunset-peach/40">✕ Reset filters</Button>
+              )}
+              <Button as="a" href="/" variant="outline" className="border-sunset-peach/40">← Back</Button>
+            </div>
           </div>
 
           {/* Tag chips */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {allTags.map(tag => {
+            {availableTags.map(tag => {
               const activeState = active.includes(tag);
               return (
                 <button
@@ -52,9 +60,6 @@ export default function ProjectsPage() {
                 </button>
               );
             })}
-            {active.length > 0 && (
-              <button onClick={clear} className="px-3 py-1 rounded-full text-xs font-medium bg-transparent border border-sunset-peach/40 text-sunset-peach/70 hover:text-sunset-peach hover:bg-sunset-peach/10">Clear</button>
-            )}
           </div>
 
           {/* Result count */}

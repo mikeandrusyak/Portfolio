@@ -58,7 +58,7 @@ export const projects = [
     embedUrl: '/api/projects/remote?url=https%3A%2F%2Fmikeandrusyak.github.io%2FNYC_data%2F',
     href: '/projects/nyc-data-remote',
     tags: ['Python', 'Data Cleaning', 'Data Analysis', 'Feature engineering', 'Data Visualization', 'Data Pipelines',
-       'CI/CD', 'A/B Testing', 'Packaging and CLI UX',  'API'],
+       'CI/CD', 'A/B Testing', 'Packaging and CLI UX',  'API', 'Blogging'],
     featured: true,
   },
 ];
