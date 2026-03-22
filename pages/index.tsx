@@ -185,7 +185,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.7 }}
-                href="mailto:mykhailo.andrusiak@students.fhnw.ch"
+                href="mailto:andrusyakmd@gmail.com"
                 className="hover:text-sunset-orange transition-colors"
                 aria-label="Email"
               >
