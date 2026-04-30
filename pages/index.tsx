@@ -201,11 +201,22 @@ export default function Home() {
               >
                 <Phone className="w-8 h-8" />
               </motion.a>
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.7 }}
+                href="/cv"
+                target="_blank"
+                className="hover:text-sunset-orange transition-colors font-semibold text-[32px] leading-none flex items-center justify-center"
+                aria-label="CV"
+              >
+                CV
+              </motion.a>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.7 }}
+              transition={{ delay: 1.0, duration: 0.7 }}
               className="text-xs text-sunset-peach/40"
             >
               © {new Date().getFullYear()} Mykhailo Andrusiak
