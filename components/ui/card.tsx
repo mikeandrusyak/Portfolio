@@ -11,7 +11,7 @@ export function Card({ title, description, github, tags, colorIdx, href }: { tit
   return (
     <div
       className={clsx(
-        'rounded-xl p-6 shadow-lg bg-gradient-to-br',
+        'relative rounded-xl p-6 shadow-lg bg-gradient-to-br',
         cardColors[colorIdx % cardColors.length],
         'border border-sunset-brown/40',
         'transition-transform hover:scale-105 hover:shadow-2xl',
@@ -21,7 +21,7 @@ export function Card({ title, description, github, tags, colorIdx, href }: { tit
       <div>
         <h3 className="text-xl font-semibold text-sunset-peach mb-2 drop-shadow">
           {href ? (
-            <Link href={href} className="hover:underline">
+            <Link href={href} className="hover:underline after:absolute after:inset-0 after:content-['']">
               {title}
             </Link>
           ) : (
@@ -43,7 +43,7 @@ export function Card({ title, description, github, tags, colorIdx, href }: { tit
         </ul>
       </div>
       <div className="flex items-center mt-auto">
-        <Link href={github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sunset-peach/80 hover:text-sunset-peach transition-colors">
+        <Link href={github} target="_blank" rel="noopener noreferrer" className="relative z-10 inline-flex items-center text-sunset-peach/80 hover:text-sunset-peach transition-colors">
           <Github className="w-5 h-5 mr-1" />
           <span>GitHub</span>
         </Link>
