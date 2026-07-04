@@ -26,8 +26,9 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-  <title>All Projects | Mykhailo Andrusiak</title>
-  <meta name="description" content="All projects with tag filtering" />
+        <title>All Projects | Mykhailo Andrusiak</title>
+        <meta name="description" content="Data science, computer vision, and DevOps projects by Mykhailo Andrusiak — from traffic monitoring with OpenCV to demographic analysis of Switzerland." />
+        <link rel="canonical" href="https://mykhailo-andrusiak.vercel.app/projects" />
       </Head>
       <main className="relative min-h-screen px-6 py-10 md:px-16 md:py-16 bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] text-sunset-peach">
         <div className="max-w-6xl mx-auto">

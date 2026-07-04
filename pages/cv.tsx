@@ -32,7 +32,7 @@ export default function CV() {
       >
         <div
           className="cv-page mx-auto bg-white shadow-lg"
-          style={{ maxWidth: '794px', padding: '32px 44px', fontFamily: 'Inter, SF Pro Display, Segoe UI, Arial, sans-serif', color: '#1a1a1a' }}
+          style={{ maxWidth: '794px', padding: '32px 44px', color: '#1a1a1a' }}
         >
           {/* ── Header ─────────────────────────────────────── */}
           <header style={{ marginBottom: '16px' }}>

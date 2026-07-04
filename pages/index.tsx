@@ -1,20 +1,17 @@
 import Head from 'next/head';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Github, Mail, Phone, Linkedin } from 'lucide-react';
+import { Github, Mail, Phone, Linkedin, ChevronDown, ChevronUp, ListChecks } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { homepageProjects, type Project } from '../data/projects';
 import { experience, type Experience } from '../data/experience';
-import { useEffect, useRef, useState } from 'react';
-import { ChevronDown, ChevronUp, ListChecks } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [active, setActive] = useState<'about' | 'experience' | 'projects'>('about');
-  const contentRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const root = contentRef.current;
-    if (!root || typeof IntersectionObserver === 'undefined') return;
+    if (typeof IntersectionObserver === 'undefined') return;
     const mapping: Record<string, 'about' | 'experience' | 'projects'> = {
       'about-text': 'about',
       experience: 'experience',
@@ -36,9 +33,9 @@ export default function Home() {
         }
         if (best && best.ratio > 0) setActive(best.key);
       },
-      { root, threshold: [0.15, 0.3, 0.6, 0.9], rootMargin: '0px 0px -25% 0px' }
+      { root: null, threshold: [0.15, 0.3, 0.6, 0.9], rootMargin: '0px 0px -25% 0px' }
     );
-  targets.forEach((t) => observer.observe(t));
+    targets.forEach((t) => observer.observe(t));
     return () => observer.disconnect();
   }, []);
   return (
@@ -46,16 +43,39 @@ export default function Home() {
       <Head>
         <title>Mykhailo Andrusiak | Portfolio</title>
         <meta name="description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
-  {/* Open Graph tags */}
-  <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
-  <meta property="og:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
-        <meta property="og:image" content="/favicon.svg" />
+        <link rel="canonical" href="https://mykhailo-andrusiak.vercel.app/" />
+        {/* Open Graph tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mykhailo-andrusiak.vercel.app/" />
+        <meta property="og:title" content="Mykhailo Andrusiak | Portfolio" />
+        <meta property="og:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
+        <meta property="og:image" content="https://mykhailo-andrusiak.vercel.app/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         {/* Twitter card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mykhailo Andrusiak | Portfolio" />
         <meta name="twitter:description" content="Data Science Student at FHNW | DevOps Engineer for ABB | Explorer of data, algorithms and robots" />
-        <meta name="twitter:image" content="/favicon.svg" />
+        <meta name="twitter:image" content="https://mykhailo-andrusiak.vercel.app/og-image.jpg" />
         <link rel="icon" href="/favicon.svg" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Mykhailo Andrusiak',
+              url: 'https://mykhailo-andrusiak.vercel.app',
+              jobTitle: 'Data Science Student & DevOps Engineer',
+              worksFor: { '@type': 'Organization', name: 'Alten' },
+              alumniOf: { '@type': 'CollegeOrUniversity', name: 'FHNW' },
+              sameAs: [
+                'https://github.com/mikeandrusyak',
+                'https://www.linkedin.com/in/qkw/',
+              ],
+            }),
+          }}
+        />
       </Head>
       <main className="relative bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] min-h-screen text-sunset-peach flex flex-col md:flex-row md:gap-4">
         {/* Sidebar */}
@@ -152,11 +172,9 @@ export default function Home() {
                 </motion.li>
               </ul>
             </nav>
-            {/* Contact icons */}
-            <div className="hidden" />
           </div>
-          <div className="flex flex-col items-left gap-6 mt-12">
-            <div className="flex flex-row justify-left gap-8">
+          <div className="flex flex-col items-start gap-6 mt-12">
+            <div className="flex flex-row justify-start gap-8">
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -224,7 +242,7 @@ export default function Home() {
           </div>
         </aside>
         {/* Main content */}
-  <section ref={contentRef} className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20">
+  <section className="w-full md:flex-1 px-6 py-8 md:py-16 md:pr-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -354,7 +372,7 @@ function ExperienceItem({ exp }: { exp: Experience }) {
             aria-expanded={open}
           >
             <ListChecks className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-            {open ? 'Hide Achievement ':' Show solved tasks and achievements'}
+            {open ? 'Hide achievements' : 'Show achievements'}
             {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
           {open && (

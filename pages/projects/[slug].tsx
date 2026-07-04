@@ -1,38 +1,52 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import { Github } from 'lucide-react';
 import { Button } from '../../components/ui/button';
-import { projects } from '../../data/projects';
+import { projects, type Project } from '../../data/projects';
 
-export default function ProjectDetailPage() {
-  const router = useRouter();
-  const { slug } = router.query as { slug?: string };
-  const project = projects.find(p => p.slug === slug);
+type Props = { project: Project };
 
-  if (!slug || !project) {
-    return (
-      <main className="relative min-h-screen bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] text-sunset-peach">
-        <div className="max-w-4xl mx-auto px-6 py-16">
-          <h1 className="text-2xl font-bold mb-4">Project not found</h1>
-          <Button as="a" href="/projects" variant="outline">← Back to Projects</Button>
-        </div>
-      </main>
-    );
-  }
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: projects.map((p) => ({ params: { slug: p.slug } })),
+  fallback: false,
+});
 
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const project = projects.find((p) => p.slug === params?.slug);
+  if (!project) return { notFound: true };
+  return { props: { project } };
+};
+
+export default function ProjectDetailPage({ project }: Props) {
   return (
     <>
       <Head>
-        <title>{project.title} | Mykhailo Andrusiak</title>
+        <title>{`${project.title} | Mykhailo Andrusiak`}</title>
         <meta name="description" content={project.description} />
+        <link rel="canonical" href={`https://mykhailo-andrusiak.vercel.app/projects/${project.slug}`} />
       </Head>
       <main className="relative h-screen overflow-hidden bg-gradient-to-br from-[#2d1a14] via-[#4e1e0f] to-[#9e4c2c] text-sunset-peach">
         <div className="max-w-6xl mx-auto h-full px-6 md:px-16 flex flex-col">
           <div className="flex items-center justify-between gap-3 flex-wrap py-6 flex-none">
-            <h1 className="text-2xl md:text-3xl font-bold">{project.title}</h1>
-            <div className="flex gap-2">
+            <div className="min-w-0">
+              <h1 className="text-2xl md:text-3xl font-bold">{project.title}</h1>
+              <p className="text-sunset-peach/80 text-sm md:text-base mt-1 max-w-2xl">{project.description}</p>
+              <ul className="flex flex-wrap gap-2 mt-2">
+                {project.tags.map((tag) => (
+                  <li key={tag} className="bg-sunset-brown/60 text-sunset-peach/80 text-xs px-2 py-1 rounded">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex gap-2 flex-wrap">
               <Button as="a" href="/projects" variant="outline" className="border-sunset-peach/40">← Back</Button>
-              {project.embedUrl && (
-                <Button as="a" href={project.embedUrl} target="_blank" variant="peach">Open fullscreen</Button>
+              <Button as="a" href={project.github} target="_blank" variant="outline" className="border-sunset-peach/40">
+                <Github className="w-4 h-4 mr-2" />
+                GitHub
+              </Button>
+              {project.liveUrl && (
+                <Button as="a" href={project.liveUrl} target="_blank" variant="peach">Open fullscreen</Button>
               )}
             </div>
           </div>

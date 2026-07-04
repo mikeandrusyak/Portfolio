@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /cv
+Disallow: /api/
+
+Sitemap: https://mykhailo-andrusiak.vercel.app/sitemap.xml
