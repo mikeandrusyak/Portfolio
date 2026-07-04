@@ -55,6 +55,17 @@ export const projects = [
     featured: true,
   },
   {
+    title: 'Signal & Image Processing (GBSV)',
+    description: 'Signal processing on a synthetic train-bogie vibration signal and classical image processing on Swiss photos: sampling, correlation, convolution, augmentation, pattern detection, and segmentation.',
+    github: 'https://github.com/mikeandrusyak/gbsv-research',
+    slug: 'gbsv-research-remote',
+    liveUrl: 'https://mikeandrusyak.github.io/gbsv-research/',
+    embedUrl: '/api/projects/remote?url=https%3A%2F%2Fmikeandrusyak.github.io%2Fgbsv-research%2F',
+    href: '/projects/gbsv-research-remote',
+    tags: ['Python', 'NumPy', 'SciPy', 'scikit-image', 'Signal Processing', 'Image Processing', 'Synthetic Data Generation'],
+    featured: false,
+  },
+  {
     title: 'NYC Data Analysis',
     description: 'Comprehensive data analysis and visualization of New York City datasets to uncover patterns, trends, and valuable insights.',
     github: 'https://github.com/mikeandrusyak/NYC_data',
